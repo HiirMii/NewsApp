@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:paddingEnd="@dimen/default_spacing"
+    android:paddingLeft="@dimen/default_spacing"
+    android:paddingRight="@dimen/default_spacing"
+    android:paddingStart="@dimen/default_spacing">
+
+    <ImageView
+        android:id="@+id/the_guardian_logo"
+        android:layout_width="@dimen/the_guardian_logo_size"
+        android:layout_height="@dimen/the_guardian_logo_size"
+        android:layout_gravity="center"
+        android:contentDescription="@string/the_guardian_logo_description"
+        android:src="@drawable/the_guardian_logo" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/default_spacing"
+        android:layout_marginStart="@dimen/default_spacing"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/article_section"
+            style="@style/article_section_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            tools:text="@string/article_section"/>
+
+        <TextView
+            android:id="@+id/article_title"
+            style="@style/article_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            tools:text="@string/article_title"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/default_spacing"
+        android:layout_marginStart="@dimen/default_spacing"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/article_date"
+            style="@style/article_date_and_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            tools:text="@string/article_date"/>
+
+        <TextView
+            android:id="@+id/article_time"
+            style="@style/article_date_and_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            tools:text="@string/article_time"/>
+
+    </LinearLayout>
+
+</LinearLayout>

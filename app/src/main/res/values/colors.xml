@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#005689</color>
+    <color name="colorPrimaryDark">#00456e</color>
+    <color name="colorPrimaryLight">#AADCE6</color>
+    <color name="colorAccent">#e6711b</color>
+
+    <!-- Text color for the article section in the list item -->
+    <color name="textColorArticleSection">#B4BAC0</color>
+
+    <!-- Text color for the article title in the list item -->
+    <color name="textColorArticleTitle">#333333</color>
+</resources>
