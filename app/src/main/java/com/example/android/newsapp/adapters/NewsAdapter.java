@@ -23,20 +23,22 @@ import java.util.List;
 /**
  * An {@link NewsAdapter} knows how to create a list item layout for each news article
  * in the data source (a list of {@link News} objects).
- *
+ * <p>
  * These list item layouts will be provided to an adapter view like ListView
  * to be displayed to the user.
  */
 public class NewsAdapter extends ArrayAdapter<News> {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     private static final String LOG_TAG = NewsAdapter.class.getSimpleName();
 
     /**
      * Constructs a new {@link NewsAdapter}.
      *
      * @param context of the app
-     * @param news is the list of news articles, which is the data source of the adapter
+     * @param news    is the list of news articles, which is the data source of the adapter
      */
     public NewsAdapter(Context context, List<News> news) {
         super(context, 0, news);
@@ -95,7 +97,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             Date object = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(dateObject);
             date = new SimpleDateFormat("LLL dd, yyyy").format(object);
 
-        }catch (ParseException e) {
+        } catch (ParseException e) {
             Log.e(LOG_TAG, "Problem with parsing dateObject to date occurred.");
         }
 
@@ -114,7 +116,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             Date object = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(dateObject);
             date = new SimpleDateFormat("h:mm a").format(object);
 
-        }catch (ParseException e) {
+        } catch (ParseException e) {
             Log.e(LOG_TAG, "Problem with parsing dateObject to time occurred.");
         }
 

@@ -6,4 +6,7 @@
     <!-- The guardian logo size -->
     <dimen name="the_guardian_logo_size">36dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- List item height-->
+    <dimen name="list_item_height">80dp</dimen>
 </resources>

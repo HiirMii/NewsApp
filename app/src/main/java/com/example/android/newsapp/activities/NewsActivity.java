@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,7 @@ public class NewsActivity extends AppCompatActivity
     public static final String LOG_TAG = NewsActivity.class.getName();
 
     /**
-     * URL for book data from Guardian API
+     * URL for news data from Guardian API
      */
     private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/search?";
 
@@ -66,7 +67,6 @@ public class NewsActivity extends AppCompatActivity
      * ProgressBar that is displayed when the data is loaded
      */
     private ProgressBar loadingIndicator;
-
 
 
     @Override
@@ -141,31 +141,46 @@ public class NewsActivity extends AppCompatActivity
         Uri baseUri = Uri.parse(NEWS_REQUEST_URL);
         Uri.Builder builder = baseUri.buildUpon();
 
+        // Section query added only when we want to filter articles
         if (!chooseCategory.contains("all")) {
-            builder.appendQueryParameter("sections", chooseCategory);
+            builder.appendQueryParameter("section", chooseCategory);
         }
         builder.appendQueryParameter("order-by", orderBy);
         builder.appendQueryParameter("api-key", API_KEY);
+
+        Log.e(LOG_TAG, builder.toString());
 
         return new NewsLoader(this, builder.toString());
     }
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
-        // Hide loading indicator because the data has been loaded
-        View loadingIndicator = findViewById(R.id.loading_indicator);
-        loadingIndicator.setVisibility(View.GONE);
 
-        // Set empty state text to display "No articles found."
-        emptyStateTextView.setText(R.string.no_news);
+        if (isConnected()) {
 
-        // Clear the adapter of previous earthquake data
-        adapter.clear();
+            // Hide loading indicator because the data has been loaded
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            loadingIndicator.setVisibility(View.GONE);
 
-        // If there is a valid list of {@link News}s, then add them to the adapter's
-        // data set. This will trigger the ListView to update.
-        if (news != null && !news.isEmpty()) {
-            adapter.addAll(news);
+            // Set empty state text to display "No articles found."
+            emptyStateTextView.setText(R.string.no_news);
+
+            // Clear the adapter of previous earthquake data
+            adapter.clear();
+
+            // If there is a valid list of {@link News}s, then add them to the adapter's
+            // data set. This will trigger the ListView to update.
+            if (news != null && !news.isEmpty()) {
+                adapter.addAll(news);
+            }
+
+        } else {
+            // Otherwise, display error
+            // First, hide loading indicator so error message will be visible
+            loadingIndicator.setVisibility(View.GONE);
+
+            // Update empty state with no connection error message
+            emptyStateTextView.setText(R.string.no_internet_connection);
         }
     }
 

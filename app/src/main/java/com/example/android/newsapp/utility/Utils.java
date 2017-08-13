@@ -29,13 +29,19 @@ import java.util.List;
  */
 public class Utils {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     private static final String LOG_TAG = Utils.class.getSimpleName();
 
-    /** Url connection successful response code */
+    /**
+     * Url connection successful response code
+     */
     private static final int RESPONSE_CODE = 200;
 
-    /** JSON response keys */
+    /**
+     * JSON response keys
+     */
     private static final String RESPONSE_KEY = "response"; // root object of the JSON response
     private static final String RESULTS_KEY = "results"; // array containing article objects
     private static final String SECTION_KEY = "sectionName"; // article object section
@@ -82,7 +88,7 @@ public class Utils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the news JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -147,7 +153,7 @@ public class Utils {
             JSONArray results = response.getJSONArray(RESULTS_KEY);
 
             // For each news article in the results array, create an {@link News} object
-            for (int i = 0; i<results.length(); i++) {
+            for (int i = 0; i < results.length(); i++) {
 
                 // Get a single news article at position i within the list of news
                 JSONObject currentNews = results.getJSONObject(i);

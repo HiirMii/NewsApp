@@ -12,7 +12,7 @@
     <style name="article_section_text">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:maxLines">1</item>
-        <item name="android:textColor">@color/textColorArticleSection</item>
+        <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">12sp</item>
     </style>

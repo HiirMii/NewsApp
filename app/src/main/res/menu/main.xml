@@ -4,8 +4,8 @@
     tools:context=".activities.NewsActivity">
     <item
         android:id="@+id/action_settings"
-        android:title="@string/settings_menu_item"
         android:icon="@drawable/ic_filter"
         android:orderInCategory="1"
+        android:title="@string/settings_menu_item"
         app:showAsAction="ifRoom" />
 </menu>
